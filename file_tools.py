@@ -14,7 +14,7 @@ except:
     import pickle
 
 
-def read_xlsx(filepath):
+def read_xlsx(filepath, sheet=0):
     '''
         本函数用于将excel文件以多级列表形式读取
 
@@ -23,7 +23,7 @@ def read_xlsx(filepath):
         [filepath](str): 文件目录（含文件名）
     '''
     data = xlrd.open_workbook(filepath)
-    table = data.sheets()[0]
+    table = data.sheets()[sheet]
     content = list(table.row_values)
     if data:
         data.release_resources()
